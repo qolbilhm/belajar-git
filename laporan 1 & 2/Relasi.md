@@ -1,5 +1,12 @@
 1. Gambar query 1 
-![](asset/relasi1.jpg)  
+```sql
+SELECT orders.OrderID, orders.OrderDate, orders.CustOD,
+-> customers.CompanyName, customers.ContacName, customers.City,
+-> customers.Phone
+-> FROM orders, customers
+-> WHERE orders.CustID = customers.CustomerID;
+```
+![belajar-git](assetrelasi/relasi1.jpg)  
 
 Analisis : 
 - `SELECT` : untuk memilih kolom mana saja yang ingin ditampilkan dan dari tabel mana kolom tersebut diambil.
@@ -15,7 +22,14 @@ Analisis :
 - `orders.custID = customers.custmersID` : kondiri dar `WHERE` yang harus dipenuhi.
 
 2. Gambar query 2
-![](asset/relasi2.jpg)
+```sql
+SELECT o.OrderID, o.OrderDate, o.CustID,
+-> c.CompanyName, c.ContactName, c.City,
+-> c.Phone
+-> FROM orders o, customers c
+-> WHERE o.CustID = c.CustomerID AND c.City = "London";
+```
+![belajar-git](assetrelasi/relasi2.jpg)
 
 Analisis : 
 - `SELECT` : untuk memilih kolom mana saja yang ingin ditampilkan dan dari tabel mana kolom tersebut diambil.
@@ -35,7 +49,13 @@ Analisis :
 - `c.city = "London"` : kondisi tambahan yang harus dipenuhi juga, jadi pada kolom city dari tabel c(customers) datanya harus berisi data "London" agar bisa ditampilkan 
 
 3. Gambar query 3
-![](asset/relasi3.jpg)
+```sql
+SELECT o.OrderID, o.OrderDate, c.CompanyName,
+-> c.ContactName, c.Phone, e.LastName, e.Title
+-> FROM orders o, customers c, employees e
+-> WHERE o.CustID = c.CustomerID AND o.EmpID = e.EmpID;
+```
+![belajar-git](assetrelasi/relasi3.jpg)
 
 Analisis : 
 - `SELECT` : untuk memilih kolom mana saja yang ingin ditampilkan dan dari tabel mana kolom tersebut diambil.
@@ -50,7 +70,14 @@ Analisis :
 - `o.custID = c.customerID` : data pada kolom EmpID dalam tabel o(orders) harus sama dengan data pada kolom EmpID dalam tabel e(employees)
 
 4. Gambar query 4
-![](asset/relasi4.jpg)
+```sql 
+SELECT o.OrderID, o.OrderDate, c.CompanyName,
+-> c.ContactName, c.Phone, e.LastName, e.Title
+-> FROM order o, customers c, employees e
+-> WHERE o.CustID = c.CustomersID AND o.EmpID = e.EmpID AND
+-> e.FirstName ="Margaret";
+```
+![belajar-git](assetrelasi/relasi4.jpg)
 
 Analisis : 
 - `SELECT` = untuk memilih kolom mana saja yang ingin ditampilkan dan dari tabel mana kolom tersebut diambil.
@@ -67,7 +94,15 @@ HASIL :
 jadi barisan data yang sudah menenuhi  kondisi WHERE akan tampil terutama kolom firstName dari tabel employees yang isinya "margaret".
 
 5. Gambar query 5
-![](asset/relasi5.jpg)
+```sql
+SELECT o.OrderID, o.OrderDate, c.CompanyName, o.OrderID,
+-> o.OrderDate, od.ProductID, p.ProductName,
+-> od.Quantity AS Qty, od.UnitPrice 
+-> FROM orders o, customers c, orderdetails od, products p
+-> AND p.ProductID = od.ProductID
+-> ORDER BY c.CustomersID;
+```
+![belajar-git](assetrelasi/relasi5.jpg)
 
 Analisis:
 - `SELECT` = untuk memilih kolom mana saja yang ingin ditampilkan dan dari tabel mana kolom tersebut diambil.
@@ -89,7 +124,12 @@ HASIL :
 kolom-kolom data yang tampil adalah data yang telah memenuhi kondisi-kondisi yang ada, dan seluruh isis data tersebut diurut berdasarkan satu kolom yaitu customerID dari tabel customers.
 
 6. Gambar query 6
-![](asset/relasi6.jpg)
+```sql
+SELECT c.customerid,c.companyname,o.orderid as OrderID, o.orderdate, CONCAT(e.lastname) AS EmployeedName, od.productid as ProdID
+-> p.productname, od.quantity AS Qty FROM csutomers c, orders o, orderdetails od, product p, employees e
+-> WHERE c.customerid=o.custid and o.orderid=od.orderid and p.productid=od.productid and e.empid=o.empid order by o.orderid;
+```
+![belajar-git](assetrelasi/relasi6.jpg)
 
 Analisis:
 - `SELECT` = untuk memilih kolom mana saja yang ingin ditampilkan dan digabungkan serta dari tabel mana kolom tersebut dipilih.
@@ -111,7 +151,15 @@ HASIL :
 kolom lastName dan firtsName dari tabel e(Employees) digabung dengan CONCAT dan hasil kolomnya namanya diubah sementara jadi EmployeeName.
 
 7. Gambar query 7
-![](asset/relasi7.jpg)
+```sql
+CREATE VIEW CustOrderEmp
+-> AS
+-> SELECT c.CustomerID, c.CompanyName, c.ContactName,
+-> o.OrderID, o.OrderDate, e.EmpID, e.LastName, e.FirstName
+-> FROM customers c, orders o, employees e
+-> WHERE c.CustomerID = o.CustID AND o.EmpID = e.EmpID;
+```
+![belajar-git](assetrelasi/relasi7.jpg)
 
 Analisis:
 - `CREATE VIEW custorderEmp` = merupakan tabel virtual yang dibuat dengan nama custorderEmp.
@@ -129,7 +177,15 @@ HASIL :
 sebuah tabel virtual telah dibuat dengan nama custorderEmp yang berisi kolom-kolom dari 3 tabel customers, orders, employees dan telah memenuhi semua kondisi.
 
 8. Gambar query 8
-![](asset/relasi8.jpg)
+```sql
+CREATE VIEW odproducts
+-> AS
+-> SELECT od.OrderID, od.ProductID, p.ProductName,
+-> od.Quantity, od.UnitPrice
+-> FROM orderdetails od, products p
+-> WHERE p.ProductID = od.ProductID;
+```
+![belajar-git](assetrelasi/relasi8.jpg)
 
 Analisis: 
 - `CREATE VIEW odproducts` = untuk membuat tabel virtual dengan nama odproducts.
@@ -144,7 +200,13 @@ HASIL :
 tabel virtual yang bernama odproducts yang terbuat dari kolom dalam 2 tabel : orderdetails dan products.
 
 9. Gambar query 9
-![](asset/relasi9.jpg)
+```sql
+SELECT c.customerid, c.companyname, o.orderid, od.productid, ROUND(od.unitprice,2) od.quantity,
+-> od.discount, ROUND(((1-od.discount)*od.unitprice*od.quantity),2) AS Jumlah
+-> FROM customers c, order o, orderdetails od WHERE c.customerid=o.custid AND o.orderid=od.orderid
+-> ORDER BY c.customersid;
+```
+![belajar-git](assetrelasi/relasi9.jpg)
 
 Analisis : 
 - `SELECT` : untuk memilih koom mana saja yang ingin ditampilkan dan dihitung.
@@ -154,7 +216,12 @@ Analisis :
 - `Roun (od.unitprice, 2)` : untuk membulatkan bilangan dari kolom unitprice sampai jumlah digit tertentu, sesuai dengan pilihan yang dibuat yaitu 2
 
 10. Gambar quey 10
-![](asset/relasi10.jpg)
+```sql
+SELECT c.customerid, c.companyname, ROUND(SUM((1-od.discount)*od.unitprice*od.quanitity).2) AS TotalJumlah
+-> FROM customers c, order o, orderdetails od WHERE c.customerid=o.custid AND o.orderid=od.orderid
+->GROUP BY c.customerid, c.companyname ORDER BY c.customerid;
+```
+![belajar-git](assetrelasi/relasi10.jpg)
 
 Analisis:
 - `SELECT` = untuk memilih kolom mana saja yang ingin ditampilkan dan dibulatkan.

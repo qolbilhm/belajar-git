@@ -10,9 +10,9 @@
 - NoCab: Varchar, NOT NULL
 ### Hasil Struktur tabel Pegawai 
 
-![](basis-data-xii/asset/1.jpg)
+![](belajar-git/assetgroupby&having/1.jpg)
 (Hasil di PhpMYAdmin)
-![github](basis-data-xii/asset/3.jpg)
+![github](belajar-git/assetgroupby&having/3.jpg)
 
 **Analisis Query :**  
 - `desc pegawai ;` Kueri ini digunakan untuk menampilkan struktur tabel pegawai, 
@@ -43,9 +43,9 @@ kombinasi NoCab dan satu atau beberapa kolom lainnya harus unik.
 **Kesimpulan Analisis Query:** 
 Analisis ini memberikan contoh tentang bagaimana tabel `pegawai` diatur dan bagaimana data di dalamnya akan disimpan dan dikelola, termasuk kendali integritas data melalui penggunaan kunci utama dan indeks unik.
 ### Hasil data tabel Pegawai 
-![github](basis-data-xii/asset/2.jpg)
+![github](belajar-git/assetgroupby&having/2.jpg)
 (Hasil di PhpMyAdmin)
-![github](basis-data-xii/asset/4.jpg)
+![github](belajar-git/assetgroupby&having/4.jpg)
 
 **Analisis Query :** 
 - **NIP (Nomor Induk Pegawai)**
@@ -78,7 +78,7 @@ Hasil dari query `SELECT * FROM pegawai` menunjukkan bahwa tabel `pegawai` memil
 ```sql
 SELECT COUNT(NIP) AS JumlahPegawai, COUNT(Jabatan) AS JumlahJabatan FROM pegawai;
 ```
-![](basis-data-xii/asset/5.jpg)
+![](belajar-git/assetgroupby&having/5.jpg)
 - `SELECT`  sebuah fungsi yang menghitung jumlah baris dalam kolom `NIP`dari tabel `pegawai`.
 - `COUNT(NIP)`akan menghitung jumlah baris yang memiliki nilai di kolom `NIP`. Jadi, jika ada 9 baris dengan nilai yang valid di kolom `NIP`, maka hasilnya akan 9.
 - `AS` untuk mengubah nama dari suatu kolom untuk sementara
@@ -97,7 +97,7 @@ SELECT COUNT(NIP) AS JumlahPegawai
 FROM pegawai
 WHERE NoCab = 'C102';
 ```
-![](basis-data-xii/asset/6.jpg)
+![](belajar-git/assetgroupby&having/6.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `COUNT(NIP)` menghitung jumlah baris data yang memiliki nilai isi data dari jolom yang dipilih `NIP` adalah nama kolom yang dipilih untuk dihitung
 - `AS` untuk mengubah nama dari suatu kolom untuk sementara
@@ -114,7 +114,7 @@ SELECT NoCab, COUNT(NIP) AS Jumlah_Pegawai
 FROM pegawai
 GROUP BY NoCab;
 ```
-![](basis-data-xii/asset/7.jpg)
+![](belajar-git/assetgroupby&having/7.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `NoCab`adalah nama kolom yang ingin ditampilkan.
 - `COUNT(NIP)` menghitung jumlah baris data yang memiliki nilai isi data dari jolom yang dipilih `NIP` adalah nama kolom yang dipilih untuk dihitung
@@ -136,7 +136,7 @@ SELECT NoCab, COUNT(NIP) AS Jumlah_Pegawai
 FROM pegawai
 GROUP BY NoCab HAVING COUNT(NIP) >= 3;
 ```
-![](basis-data-xii/asset/8.jpg)
+![](belajar-git/assetgroupby&having/8.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `NoCab`adalah nama kolom yang ingin ditampilkan.
 - `COUNT(NIP)` menghitung jumlah baris data yang memiliki nilai isi data dari jolom yang dipilih `NIP` adalah nama kolom yang dipilih untuk dihitung
@@ -155,7 +155,7 @@ Jadi, query ini akan menghitung total gaji dari semua pegawai yang ada di tabel�
 SELECT SUM(Gaji) AS Total_Gaji
 FROM pegawai;
 ```
-![](basis-data-xii/asset/9.jpg)
+![](belajar-git/assetgroupby&having/9.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `SUM (Gaji)` untuk menghitung Jumlah data khusus angka pada kolom yang dipilih. Gaji merupakan nama kolom yang dipilih untuk dihitung jumlah isi datanya
 -  `AS` untuk mengubah nama dari suatu kolom untuk sementara
@@ -171,7 +171,7 @@ SELECT SUM(Gaji) AS Gaji_Manajer
 FROM pegawai
 WHERE Jabatan = 'Manajer';
 ```
-![](basis-data-xii/asset/10.jpg)
+![](belajar-git/assetgroupby&having/10.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `SUM (Gaji)` untuk menghitung Jumlah data khusus angka pada kolom yang dipilih. Gaji merupakan nama kolom yang dipilih untuk dihitung jumlah isi datanya
 -  `AS` untuk mengubah nama dari suatu kolom untuk sementara
@@ -188,7 +188,7 @@ SELECT NoCab, SUM(Gaji) AS TotalGaji
 FROM pegawai
 GROUP BY NoCab;
 ```
-![](basis-data-xii/asset/11.jpg)
+![](belajar-git/assetgroupby&having/11.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `NoCab`adalah nama kolom yang ingin ditampilkan.
 - `SUM (Gaji)` untuk menghitung Jumlah data khusus angka pada kolom yang dipilih. Gaji merupakan nama kolom yang dipilih untuk dihitung jumlah isi datanya
@@ -211,7 +211,7 @@ FROM pegawai
 GROUP BY NoCab
 HAVING SUM(Gaji) >= 8000000;
 ```
-![](basis-data-xii/asset/12.jpg)
+![](belajar-git/assetgroupby&having/12.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `NoCab`adalah nama kolom yang ingin ditampilkan.
 - `SUM (Gaji)` untuk menghitung Jumlah data khusus angka pada kolom yang dipilih. Gaji merupakan nama kolom yang dipilih untuk dihitung jumlah isi datanya
@@ -232,7 +232,7 @@ Hasil query ini menunjukkan bahwa hanya ada 2 cabang yang memiliki total gaji le
 SELECT AVG(Gaji) AS Rata_rata
 FROM pegawai;
 ```
-![](basis-data-xii/asset/13.jpg)
+![](belajar-git/assetgroupby&having/13.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `AVG(Gaji)` untuk menghitung rata-rata dari data yang ada pada kolom yang dipilih, Gaji adalah nama kolom yang dipilih untuk dihitung rata-ratanya
 -  `AS` untuk mengubah nama dari suatu kolom untuk sementara
@@ -248,7 +248,7 @@ SELECT AVG(Gaji) AS RataMgr
 FROM pegawai
 WHERE Jabatan = 'Manajer';
 ```
-![](basis-data-xii/asset/14.jpg)
+![](belajar-git/assetgroupby&having/14.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `AVG(Gaji)` untuk menghitung rata-rata dari data yang ada pada kolom yang dipilih, Gaji adalah nama kolom yang dipilih untuk dihitung rata-ratanya
 -  `AS` untuk mengubah nama dari suatu kolom untuk sementara
@@ -267,7 +267,7 @@ SELECT NoCab, AVG(Gaji) AS RataGaji
 FROM pegawai
 GROUP BY NoCab;
 ```
-![](basis-data-xii/asset/15.jpg)
+![](belajar-git/assetgroupby&having/15.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `NoCab`adalah nama kolom yang ingin ditampilkan.
 - `AVG(Gaji)` untuk menghitung rata-rata dari data yang ada pada kolom yang dipilih, Gaji adalah nama kolom yang dipilih untuk dihitung rata-ratanya
@@ -290,7 +290,7 @@ FROM pegawai
 GROUP BY NoCab
 HAVING NoCab = 'C101' OR NoCab = 'C102';
 ```
-![](basis-data-xii/asset/16.jpg)
+![](belajar-git/assetgroupby&having/16.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `NoCab`adalah nama kolom yang ingin ditampilkan.
 - `AVG(Gaji)` untuk menghitung rata-rata dari data yang ada pada kolom yang dipilih, Gaji adalah nama kolom yang dipilih untuk dihitung rata-ratanya
@@ -311,7 +311,7 @@ Hasil query ini menunjukkan rata-rata gaji pegawai hanya untuk cabang C101 dan C
 SELECT MAX(Gaji) AS GajiTerbesar, MIN(Gaji) AS GajiTerkecil
 FROM pegawai;
 ```
-![](basis-data-xii/asset/17.jpg)
+![](belajar-git/assetgroupby&having/17.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `MAX(Gaji)` untuk menampilkan nilai maksimum atau terbesar/tertinggi dari suatu data dalam kolom yang dipilih. `Gaji` adalah nama kolom yang dipilih
 - `AS GajiTerbesar` untuk mengganti nama dari kolom hasil `MAX(Gaji)` menjadi nama sementaranya yaitu GajiTerbesar
@@ -329,7 +329,7 @@ SELECT MAX(Gaji) AS GajiTerbesar, MIN(Gaji) AS GajiTerkecil
 FROM pegawai
 WHERE Jabatan = 'Manajer';
 ```
-![](basis-data-xii/asset/18.jpg)
+![](belajar-git/assetgroupby&having/18.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `MAX(Gaji)` untuk menampilkan nilai maksimum atau terbesar/tertinggi dari suatu data dalam kolom yang dipilih. `Gaji` adalah nama kolom yang dipilih
 - `AS GajiTerbesar` untuk mengganti nama dari kolom hasil `MAX(Gaji)` menjadi nama sementaranya yaitu GajiTerbesar
@@ -349,7 +349,7 @@ SELECT NoCab, MAX(Gaji) AS GajiTerbesar, MIN(Gaji) AS GajiTerkecil
 FROM pegawai
 GROUP BY NoCab;
 ```
-![](basis-data-xii/asset/19.jpg)
+![](belajar-git/assetgroupby&having/19.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `NoCab`adalah nama kolom yang ingin ditampilkan.
 - `MAX(Gaji)` untuk menampilkan nilai maksimum atau terbesar/tertinggi dari suatu data dalam kolom yang dipilih. `Gaji` adalah nama kolom yang dipilih
@@ -381,7 +381,7 @@ FROM pegawai
 GROUP BY NoCab
 HAVING COUNT(NIP) >= 3;
 ```
-![](basis-data-xii/asset/20.jpg)
+![](belajar-git/assetgroupby&having/20.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `NoCab`adalah nama kolom yang ingin ditampilkan.
 - `MAX(Gaji)` untuk menampilkan nilai maksimum atau terbesar/tertinggi dari suatu data dalam kolom yang dipilih. `Gaji` adalah nama kolom yang dipilih
@@ -407,7 +407,7 @@ SELECT COUNT(NIP) AS JumlahPegawai,
        MIN(Gaji) AS Gajimin
 FROM pegawai;
 ```
-![](basis-data-xii/asset/21.jpg)
+![](belajar-git/assetgroupby&having/21.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `COUNT(NIP)` untuk menghitung jumlah barisan data yang ada pada kolam yang dipilih
 - `AS JumlahPegawai` untuk mengganti nama kolom hasil `COUNT(NIP)` menjadi jumlah pegawai
@@ -439,7 +439,7 @@ WHERE Jabatan = 'Staf' OR Jabatan = 'Sales'
 GROUP BY NoCab
 HAVING SUM(Gaji) <= 2600000;
 ```
-![](basis-data-xii/asset/22.jpg)
+![](belajar-git/assetgroupby&having/22.jpg)
 - `SELECT` untuk memilih kolom apa saja yang ingin dipilih
 - `COUNT(NIP)` untuk menghitung jumlah barisan data yang ada pada kolam yang dipilih
 - `AS JumlahPegawai` untuk mengganti nama kolom hasil `COUNT(NIP)` menjadi jumlah pegawai

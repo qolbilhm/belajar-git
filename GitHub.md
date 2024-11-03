@@ -1,7 +1,7 @@
 ---
 sticker: emoji//1f90d
 ---
-# 1. Instalasi Git Bush
+ # 1. Instalasi Git Bush
 1. Jika ingin mendownload github search Git SCM, gambarnya seperti di bawah ini
 ![](asset/19.jpg)
 
